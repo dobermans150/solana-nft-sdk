@@ -32,8 +32,8 @@ const CONFIG_FILE_PATH = path.resolve(
 
 export async function main() {
 
-
     const connection = new Connection('https://api.devnet.solana.com', 'confirmed');
+
     console.log(`Successfully connected to Solana dev net.`);
 
     const configYml = await fs.readFile(CONFIG_FILE_PATH, { encoding: 'utf8' });
@@ -108,11 +108,10 @@ export async function main() {
         programId: programId,
         data: Buffer.alloc(0)
     })
-
     await sendAndConfirmTransaction(
         connection,
         new Transaction().add(instruction),
-        [wallet, mintKeypair]
+        [wallet, mintKeypair],
     )
 
 }
